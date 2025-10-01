@@ -26,3 +26,11 @@
 
 /// <reference types="cypress" />
 /// <reference types="@cypress/xpath" />
+
+Cypress.Commands.add("getIframe", (iframeSelector) => {
+  return cy
+    .get(iframeSelector)
+    .its("0.contentDocument.body")
+    .should("be.visible")
+    .then(cy.wrap);
+});
